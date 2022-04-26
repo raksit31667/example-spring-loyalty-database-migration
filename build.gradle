@@ -16,8 +16,8 @@ dependencies {
 
 flyway {
     driver = 'org.postgresql.Driver'
-    url = 'jdbc:postgresql://localhost:5432/postgres'
-    user = 'postgres'
-    password = 'postgres'
+    url = "jdbc:postgresql://${System.getenv('DB_HOSTNAME')}:5432/${System.getenv('DB_NAME')}"
+    user = System.getenv('DB_USERNAME')
+    password = System.getenv('DB_PASSWORD')
     locations = ['classpath:db/migration']
 }

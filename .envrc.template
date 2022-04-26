@@ -1,0 +1,4 @@
+export DB_HOSTNAME=<your-database-hostname-here>
+export DB_NAME=<your-database-name-here>
+export DB_USERNAME=<your-database-username-here>
+export DB_PASSWORD=<your-database-password-here>
