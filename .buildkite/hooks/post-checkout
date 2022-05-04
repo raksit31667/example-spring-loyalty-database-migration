@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eu
+echo ':amazon-rds: Getting RDS PostgreSQL credentials'
+
+export DB_HOSTNAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."host"`
+export DB_NAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."dbname"`
+export DB_USERNAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."username"`
+export DB_PASSWORD=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."password"`
