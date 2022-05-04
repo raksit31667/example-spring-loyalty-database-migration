@@ -4,7 +4,7 @@ services:
     image: openjdk:17.0.2-slim
     command: ./gradlew flywayMigrate -i
     environment:
-      DB_HOSTNAME: ${GITHUB_USERNAME}
-      DB_NAME: ${GITHUB_TOKEN}
-      DB_USERNAME: ${GITHUB_TOKEN}
-      DB_PASSWORD: ${GITHUB_TOKEN}
+      DB_HOSTNAME: ${DB_HOSTNAME}
+      DB_NAME: ${DB_NAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
