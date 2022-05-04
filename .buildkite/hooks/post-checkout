@@ -9,6 +9,8 @@ export AWS_ACCESS_KEY_ID=`echo $credentials | jq .Credentials.AccessKeyId`
 export AWS_SECRET_ACCESS_KEY=`echo $credentials | jq .Credentials.SecretAccessKey`
 export AWS_SESSION_TOKEN=`echo $credentials | jq .Credentials.SessionToken`
 
+echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID; AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY; AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN;"
+
 export DB_HOSTNAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."host"`
 export DB_NAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."dbname"`
 export DB_USERNAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."username"`
