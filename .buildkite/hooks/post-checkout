@@ -4,7 +4,7 @@ set -eu
 echo ':amazon-rds: Getting RDS PostgreSQL credentials'
 
 # Assume an ExampleSpringLoyaltyInfra Role
-local credentials=$(aws sts assume-role --role-arn "arn:aws:iam::564702493239:role/ExampleSpringLoyaltyInfra" --role-session-name buildkite)
+credentials=$(aws sts assume-role --role-arn "arn:aws:iam::564702493239:role/ExampleSpringLoyaltyInfra" --role-session-name buildkite)
 export AWS_ACCESS_KEY_ID=`echo $credentials | jq .Credentials.AccessKeyId`
 export AWS_SECRET_ACCESS_KEY=`echo $credentials | jq .Credentials.SecretAccessKey`
 export AWS_SESSION_TOKEN=`echo $credentials | jq .Credentials.SessionToken`
