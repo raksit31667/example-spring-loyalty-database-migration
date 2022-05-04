@@ -3,6 +3,10 @@
 set -eu
 echo ':amazon-rds: Getting RDS PostgreSQL credentials'
 
+# Assume an ExampleSpringLoyaltyInfra Role
+aws sts assume-role --role-arn "arn:aws:iam::564702493239:role/ExampleSpringLoyaltyInfra" --role-session-name buildkite
+aws sts get-caller-identity
+
 export DB_HOSTNAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."host"`
 export DB_NAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."dbname"`
 export DB_USERNAME=`aws secretsmanager get-secret-value --secret-id "ExampleSpringLoyaltyPostgreSQLSecret" --query SecretString --output text | jq -r ."username"`
